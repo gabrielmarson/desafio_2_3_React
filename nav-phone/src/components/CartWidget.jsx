@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconCarrito = ({cantidad}) => {
+const CartWidget = ({cantidad}) => {
     return (
         <>
             <li><a href="#"><i className="bi bi-cart2">{cantidad}</i></a></li>
@@ -8,4 +8,4 @@ const IconCarrito = ({cantidad}) => {
     );
 }
 
-export default IconCarrito;
+export default CartWidget;
