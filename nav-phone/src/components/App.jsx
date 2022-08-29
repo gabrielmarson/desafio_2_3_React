@@ -9,7 +9,7 @@ const App = () => {
         <div>
             <Navbar/>
             <ItemListContainer/>
-            <CelusCards/>
+            {CelusCards}
         </div>
     );
 }
