@@ -3,6 +3,8 @@ import './Navbar.css';
 import Navbar from './Navbar';
 import ItemListContainer from './ItemListContainer';
 import CelusCards from './CelusCards';
+import ItemDetailContainer from './ItemDetailContainer';
+
 
 const App = () => {
     return (
@@ -10,6 +12,7 @@ const App = () => {
             <Navbar/>
             <ItemListContainer/>
             {CelusCards}
+            <ItemDetailContainer/>
         </div>
     );
 }
