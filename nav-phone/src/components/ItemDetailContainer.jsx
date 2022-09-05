@@ -1,11 +1,14 @@
-
 import React, {useState, useEffect} from 'react';
 import datosCelus from '../DatosCelus';
-import s22 from '../img/s22_ultra_300.png';
+import Counter from './Counter';
+import Swal from "sweetalert2";
+import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
-    const [celulares, setCelulares] = useState([]);
 
+    const [celulares, setCelulares] = useState([]);
+    console.log(celulares)
+    const {id} = useParams()
     useEffect(() => {
         
         const getCeluData = new Promise ((resolve, reject) => {
@@ -15,30 +18,38 @@ const ItemDetailContainer = () => {
         });
 
         getCeluData
-        .then((response) => setCelulares (response))
+        .then((response) => (response))
+        .then(data => {
+
+            const producto = data.find(producto => producto.id == id)
+            setCelulares(producto)
+
+        })
         .catch(error => {
             console.error(error)
         })
-
+    
     }, []);
-                    
+                
+        function onAdd(count){
+            Swal.fire(`Se han seleccionado ${count} productos`)
+        }
+
     return(
-                //Eze bueno aca te dejo el otro desafio lo unicoi que no pude hacer es traer la imagen del Array osea cuando quiero traerla haciendo {celulares[0]?.imagen} no me la devuelve... probe mil fomar pero no pude hacerlo asique la tuve que importar directamente. Si le sacas la ficha avisame Eze jaj. El mejor Tutor Lejos! ahora le tengo que meter al otro desafio lo voy a hacer en un repo nuevo para que no se me mezcle todo!, me parece que es lo mejor..
-        <div>
-            <div className='p-5 d-table-cell w-50'>
-                <div className="card" style={{width: '18rem'}}>
-                  <ul className="list-group list-group-flush">
-                  <div>
-                  <img src={s22} className="card-img-top" alt="..."></img>
-                    <li className="list-group-item text-bg-primary">{celulares[0]?.marca}</li>
-                    <li className="list-group-item text-bg-secondary">{celulares[0]?.modelo}</li>
-                    <li className="list-group-item text-bg-secondary">{celulares[0]?.descripcion}</li>
-                    <li className="list-group-item text-bg-success">${celulares[0]?.precio}</li>
-                 </div>
+               
+        <>
+            <div className='p-5 d-table-cell'>
+                <div className="card" style={{width: '20rem'}}>
+                  <ul className="list-group list-group-horizontal">
+                    <li className='list-group text-center fs-3 fw-bold'><img src={celulares.imagen} alt="..."></img>{celulares.marca}  {celulares.modelo} ${celulares.precio}</li>
+                    <li className="list-group-item text-bg-secondary">{celulares.descripcion}</li>
                   </ul>
                 </div>
             </div>
-        </div>
+            <div>
+                <Counter stock = {14} onAdd={onAdd}/>
+            </div>
+        </>
     )
 
 };

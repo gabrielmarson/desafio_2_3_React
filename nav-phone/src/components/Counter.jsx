@@ -26,8 +26,7 @@ const Counter = ({stock, onAdd}) => {
     }
 
     return (
-        <div className='App'>
-            <div className="card w-50 m-auto">
+            <div className="position-absolute top-50 start-50 translate-middle-y">
                 <div className="card-body">
                     <h5 className="card-title text-center">Contador</h5>
                     <p className="card-text text-center">Stock: {stock}</p>
@@ -42,7 +41,6 @@ const Counter = ({stock, onAdd}) => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 
