@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import datosCelus from '../DatosCelus';
-import Counter from './Counter';
+import Counter, { ItemCounts } from "./Counter";
 import Swal from "sweetalert2";
-import { useParams } from 'react-router-dom';
+import { Link, useHref, useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
 
+
     const [celulares, setCelulares] = useState([]);
-    console.log(celulares)
+
     const {id} = useParams()
     useEffect(() => {
         
@@ -30,9 +31,24 @@ const ItemDetailContainer = () => {
         })
     
     }, []);
-                
-        function onAdd(count){
-            Swal.fire(`Se han seleccionado ${count} productos`)
+        function onAdd(count, ){
+            Swal.fire({
+                title: (`Se han seleccionado ${count} productos`),
+                text: "Desea terminar su compra?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Finalizar mi compra',
+                cancelButtonText: 'Modificar mi compra',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    return(
+                        <><Link to={"/cart"}></Link></> 
+                    )
+                                   
+                }
+
+              })
         }
 
     return(
@@ -47,7 +63,7 @@ const ItemDetailContainer = () => {
                 </div>
             </div>
             <div>
-                <Counter stock = {14} onAdd={onAdd}/>
+                {<ItemCounts stock = {celulares.stock} onClick={onAdd}/>}  
             </div>
         </>
     )

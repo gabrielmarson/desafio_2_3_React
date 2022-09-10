@@ -1,9 +1,9 @@
 import {useState} from 'react';
 
-const Counter = ({stock, onAdd}) => {
-
-    const [count, setCount] = useState(0);
-
+export const ItemCounts = ({stock, onClick}) => {
+    
+    const [count, setCount] = useState(1);
+    
     function sumar() {
         if (count < stock) {
 
@@ -14,7 +14,7 @@ const Counter = ({stock, onAdd}) => {
     }
 
     function restar() {
-        if (count > 0) {
+        if (count > 1) {
 
             setCount(count - 1);
         }
@@ -22,26 +22,28 @@ const Counter = ({stock, onAdd}) => {
 
     function reset() {
 
-        setCount(0);
+        setCount(1);
     }
 
+    
     return (
+        
             <div className="position-absolute top-50 start-50 translate-middle-y">
                 <div className="card-body">
                     <h5 className="card-title text-center">Contador</h5>
                     <p className="card-text text-center">Stock: {stock}</p>
                     <p className="card-text text-center">Cantidad: {count}</p>
                     <div className="d-flex justify-content-center">
-                        <a href="#" className="btn btn-primary m-5" onClick={sumar}>+</a>
-                        <a href="#" className="btn btn-primary m-5" onClick={reset}>RESET</a>
-                        <a href="#" className="btn btn-primary m-5" onClick={restar}>-</a>
+                        <button className="btn btn-primary m-5" onClick={sumar}>+</button>
+                        <button className="btn btn-primary m-5" onClick={reset}>RESET</button>
+                        <button className="btn btn-primary m-5" onClick={restar}>-</button>
                     </div>
                     <div>
-                    <a href="#" className="btn btn-dark position-absolute top-55 start-50 translate-middle" onClick={() => onAdd(count)}>Confirmar</a>
+                        <button disabled={stock <=0} className="btn btn-dark position-absolute top-55 start-50 translate-middle" type="button" onClick={() =>  onClick(count)}>Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
     );
 }
 
-export default Counter;
+
