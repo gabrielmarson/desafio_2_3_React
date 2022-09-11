@@ -2,14 +2,15 @@ import React, {useState, useEffect} from 'react';
 import datosCelus from '../DatosCelus';
 import Counter, { ItemCounts } from "./Counter";
 import Swal from "sweetalert2";
-import { Link, useHref, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+
 
 const ItemDetailContainer = () => {
 
-
+    const navigate = useNavigate();
     const [celulares, setCelulares] = useState([]);
 
-    const {id} = useParams()
+    const {id} = useParams();
     useEffect(() => {
         
         const getCeluData = new Promise ((resolve, reject) => {
@@ -31,7 +32,8 @@ const ItemDetailContainer = () => {
         })
     
     }, []);
-        function onAdd(count, ){
+        function onAdd(count) {
+            
             Swal.fire({
                 title: (`Se han seleccionado ${count} productos`),
                 text: "Desea terminar su compra?",
@@ -42,9 +44,9 @@ const ItemDetailContainer = () => {
                 cancelButtonText: 'Modificar mi compra',
               }).then((result) => {
                 if (result.isConfirmed) {
-                    return(
-                        <><Link to={"/cart"}></Link></> 
-                    )
+                    const productoCarrito = {id: celulares.id, cantidad: count}
+                    console.log(productoCarrito)
+                    navigate("/cart")
                                    
                 }
 
@@ -54,6 +56,7 @@ const ItemDetailContainer = () => {
     return(
                
         <>
+        <div>
             <div className='p-5 d-table-cell'>
                 <div className="card" style={{width: '20rem'}}>
                   <ul className="list-group list-group-horizontal">
@@ -63,8 +66,9 @@ const ItemDetailContainer = () => {
                 </div>
             </div>
             <div>
-                {<ItemCounts stock = {celulares.stock} onClick={onAdd}/>}  
+                {<ItemCounts stock = {celulares.stock} onClick={onAdd}/>}     
             </div>
+        </div>
         </>
     )
 

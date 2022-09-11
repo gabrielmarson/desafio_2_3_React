@@ -30,7 +30,7 @@ export const ItemCounts = ({stock, onClick}) => {
         
             <div className="position-absolute top-50 start-50 translate-middle-y">
                 <div className="card-body">
-                    <h5 className="card-title text-center">Contador</h5>
+                    <h5 className="card-title text-center">Detalle de su Compra</h5>
                     <p className="card-text text-center">Stock: {stock}</p>
                     <p className="card-text text-center">Cantidad: {count}</p>
                     <div className="d-flex justify-content-center">
@@ -39,7 +39,7 @@ export const ItemCounts = ({stock, onClick}) => {
                         <button className="btn btn-primary m-5" onClick={restar}>-</button>
                     </div>
                     <div>
-                        <button disabled={stock <=0} className="btn btn-dark position-absolute top-55 start-50 translate-middle" type="button" onClick={() =>  onClick(count)}>Agregar al Carrito</button>
+                        <button disabled={stock <=0} className="btn btn-success position-absolute top-55 start-50 translate-middle" type="button" onClick={() =>  onClick(count)}>Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
