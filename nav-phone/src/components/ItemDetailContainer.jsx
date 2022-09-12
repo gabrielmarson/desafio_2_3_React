@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import datosCelus from '../DatosCelus';
 import Counter, { ItemCounts } from "./Counter";
 import Swal from "sweetalert2";
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useCartContext } from './context/CartContext';
 
 
 const ItemDetailContainer = () => {
