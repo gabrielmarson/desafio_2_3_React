@@ -9,7 +9,11 @@ import { useCartContext } from './context/CartContext';
 const ItemDetailContainer = () => {
 
     const navigate = useNavigate();
+
     const [celulares, setCelulares] = useState([]);
+
+    const { addItem } = useCartContext();
+    
 
     const {id} = useParams();
     useEffect(() => {
@@ -34,7 +38,7 @@ const ItemDetailContainer = () => {
     
     }, []);
         function onAdd(count) {
-            
+
             Swal.fire({
                 title: (`Se han seleccionado ${count} productos`),
                 text: "Desea terminar su compra?",
@@ -47,6 +51,9 @@ const ItemDetailContainer = () => {
                 if (result.isConfirmed) {
                     const productoCarrito = {id: celulares.id, cantidad: count}
                     console.log(productoCarrito)
+                    addItem(celulares, count);
+                    let stock = celulares.stock - count
+                    celulares.stock = stock;
                     navigate("/cart")
                                    
                 }
