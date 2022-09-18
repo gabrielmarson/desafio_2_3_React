@@ -45,7 +45,7 @@ const ItemDetailContainer = () => {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Finalizar mi compra',
+                confirmButtonText: 'Ir al Carrito',
                 cancelButtonText: 'Modificar mi compra',
               }).then((result) => {
                 if (result.isConfirmed) {
