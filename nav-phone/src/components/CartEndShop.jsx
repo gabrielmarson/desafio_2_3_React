@@ -1,19 +1,9 @@
 import React, {useState} from "react";
-import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const CartEndShop = ({ totalPrice }) => {
-
-    const comprar = () => {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Compra realizada con éxito!',
-        showConfirmButton: false,
-        timer: 2500
-      })
-    }    
+    
     const [cuota, setCuota] = useState(totalPrice(1)); 
-    console.log(cuota)
 
   return (
     <div className="d-flex justify-content-center gap-5 mb-5">
@@ -29,7 +19,7 @@ const CartEndShop = ({ totalPrice }) => {
       <div className="card ">
         <div className="card-body fw-bold fs-3 text-center" style={{width: '12rem'}}>${cuota}</div>
       </div>
-      <button onClick={comprar} type="button" class="btn btn-primary ">COMPRAR</button>
+      <Link to="/checkout"><button type="button" class="btn btn-primary ">COMPRAR</button></Link>
     </div>
   );
 };
