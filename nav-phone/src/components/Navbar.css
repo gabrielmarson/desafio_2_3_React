@@ -7,7 +7,6 @@ body{
   justify-content: space-evenly;   
   list-style: none;
   background-color: rgb(247, 247, 247);
-  
 }
 
 .Underline{
@@ -22,6 +21,10 @@ body{
 nav ul li img{
   width: 200px;
   margin-right: 30px;
+}
+
+nav ul li{
+  position: relative;
 }
 
 .loader{

@@ -23,7 +23,6 @@ const FormCheckout = () => {
         try {
             const col = collection(db, "Orders")
             const order = await addDoc(col, data)
-            console.log("OrderNro:", order)
             setOrderId(order.id)
             clear()
         } catch (error) {
@@ -41,12 +40,9 @@ const FormCheckout = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const celus = cart.map(e=>{return {id:e.id, marca:e.marca, modelo:e.modelo, precio:e.precio, quantity:e.quantity}})
-        console.log(celus)
         const dia = new Date()
-        //Hola Eze mira aca tengo un problema. Lo que quiero hacer es traer el precio total pero de la cantidad de cuotas no solo de la cuota 1 si no tambien por ejemplo de la cuota 6 osea cuando el usuario seleccione 6 cuotas y le tire el total del precio por esas 6 cuotas. Ya intente traer ese total del CartEndShop pero tampoco me resulta. Lo que hice fue importar el CartEndShop y en la const total poner: <CartEndShop totalPrice={totalPice}/>. Asi tal cual si te vas al Cart.jsx lo tengo de esta misma manera pero funciona jaja, aca no =/.... Bueno intente de todas las formas igual pero bueno de ultima si es muy complicado lo saco pero me gusto como habia quedado en realidad. Bueno Eze esto seria por un lado, y lo ultimo es como podria hacer para descontar el stock de cada producto cuando el usuario finaliza la compra. Eso seria todo teniendo esto no se si me faltaria algo mas pero ya me pondria a darle bien el estilo al sitio agregar el footer y validar bien los botones, los loaders y todo lo demas.. Gracias Eze
         const total = totalPrice(1)
         const data = {comprar, celus, dia, total}
-        console.log("data", data)
         generateOrder(data)
     }
 
@@ -128,7 +124,7 @@ const FormCheckout = () => {
           </form>
       </div>)
         :  
-        <h4>Su orden de compra es: {orderId}</h4> 
+        <h4 className="text-center fs-2 fw-bolder">Su orden de compra es: {orderId}</h4> 
     }
     </>
   );

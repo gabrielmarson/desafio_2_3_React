@@ -1,0 +1,52 @@
+.pago-envio {
+    margin-top: 50px;
+        margin-bottom: 30px;
+        padding: 5px;
+        gap: 25px;
+        list-style: none;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: 35px;
+}
+
+.redes{
+    margin-top: 50px;
+        margin-bottom: 30px;
+        padding: 5px;
+        gap: 25px;
+        list-style: none;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: 35px;
+}
+.bi-instagram{
+    color: #eb738d;
+}
+.bi-facebook{
+    color: rgb(52, 52, 235);
+}
+.bi-whatsapp{
+    color: green;
+}
+
+.nav2{
+    background: rgb(155, 228, 155);
+    margin: auto;
+    
+}
+
+.nav2 ul li{
+    list-style-type: none;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+h3{
+    text-align: center;
+}

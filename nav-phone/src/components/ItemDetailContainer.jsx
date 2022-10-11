@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import db from "../firebase/firebaseConfig";
-//import datosCelus from '../DatosCelus';
 import Counter, { ItemCounts } from "./Counter";
 import Swal from "sweetalert2";
 import { useParams, useNavigate } from "react-router-dom";
@@ -33,27 +32,6 @@ const ItemDetailContainer = () => {
 
   })
 
-  /*useEffect(() => {
-
-  const getCeluData = new Promise ((resolve, reject) => {
-            setTimeout(() => {
-                resolve(datosCelus);
-            }, 2000);
-        });
-
-        getCeluData
-        .then((response) => (response))
-        .then(data => {
-
-            const producto = data.find(producto => producto.id == id)
-            setCelulares(producto)
-
-        })
-        .catch(error => {
-            console.error(error)
-        })
-    
-    }, []);*/
 
   function onAdd(count) {
     Swal.fire({
@@ -80,7 +58,7 @@ const ItemDetailContainer = () => {
     <>
       <div>
         <div className="p-5 d-table-cell">
-          <div className="card" style={{ width: "20rem" }}>
+          <div className="card" style={{ width: "30rem" }}>
             <ul className="list-group list-group-horizontal">
               <li className="list-group text-center fs-3 fw-bold">
                 <img src={celulares.imagen} alt="..."></img>

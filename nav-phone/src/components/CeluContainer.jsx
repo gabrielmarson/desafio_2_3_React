@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CelusCards from "./CelusCards";
-//import datosCelus from '../DatosCelus';
+import Celu from "./Celu";
 import "./Navbar.css";
 import { useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -30,33 +30,10 @@ const CeluContainer = () => {
     getData(categoria)
   }, [categoria]) 
 
-  /*const getCeluData = new Promise ((resolve, reject) => {
-
-            if(categoria) {
-                 setTimeout(() => {
-                    resolve(datosCelus.filter(item => item.marca === categoria));
-                }, 2000);
-            }else{
-                setTimeout(() => {
-                    resolve(datosCelus)}, 2000);
-                }
-            
-        });
-
-        getCeluData
-        .then((response) => setCelulares (response))
-        .catch(error => {
-           
-            console.error(error)
-
-        })
-
-    }, [categoria]);*/
-
   return (
     <>
-      {celulares.length ? (
-        <CelusCards Cards={celulares} />
+      {celulares.length ? ( 
+        <CelusCards Cards={celulares}/>
       ) : (
         <h1 className="loader">Cargando...</h1>
       )}

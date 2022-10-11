@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-
-const CartEndShop = ({ totalPrice }) => {
-    
+import { useCartContext } from "./context/CartContext";
+const CartEndShop = () => {
+    const {totalPrice} = useCartContext();
     const [cuota, setCuota] = useState(totalPrice(1)); 
 
   return (
@@ -19,7 +19,7 @@ const CartEndShop = ({ totalPrice }) => {
       <div className="card ">
         <div className="card-body fw-bold fs-3 text-center" style={{width: '12rem'}}>${cuota}</div>
       </div>
-      <Link to="/checkout"><button type="button" class="btn btn-primary ">COMPRAR</button></Link>
+      <Link to="/checkout"><button type="button" class="btn btn-primary fs-5" style={{height: '5rem'}}>COMPRAR</button></Link>
     </div>
   );
 };

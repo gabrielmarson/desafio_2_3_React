@@ -13,6 +13,7 @@ function Navbar() {
         <Link className='Underline' to="/categoria/Samsung"><li>Samsung</li></Link>
         <Link className='Underline' to="/categoria/Motorola"><li>Motorola</li></Link>
         <Link className='Underline' to="/categoria/Xiaomi"><li>Xiaomi</li></Link>
+        <Link className='Underline' to="/categoria/Iphone"><li>Iphone</li></Link>
         <Link className='Underline' to="/cart"><CartWidget/></Link>
       </ul>
     </nav>
